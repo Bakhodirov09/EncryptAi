@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper active">
+    <p>{{ message }}</p>
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form action="{% url 'users:register' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" required name="first_name">
+                    <label>Ism</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" required name="last_name">
+                    <label>Familya</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required name="username">
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="text" required name="email">
+                    <label>Gmail</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required name="password">
+                    <label>Parol</label>
+                </div>
+                <div class="login-register">
+                    <p>Akkauntingiz bormi? <a href="{% url 'users:login' %}" class="login-link">Login</a>
+                    </p>
+                </div>
+                <button type="submit" class="btn">Ro'yxatdan o'tish</button>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}

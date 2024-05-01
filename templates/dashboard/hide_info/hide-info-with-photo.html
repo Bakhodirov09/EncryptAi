@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/for-hide-info.css' %}">
+{% endblock %}
+{% block content %}
+    {% if image %}
+        <img style="width: 150px; height: 150px; margin: -150px 0 150px 800px ; position:relative; top: -250px" src="{{ image.url }}" alt="" class="image active">
+        <a href="{{ image.url }}" download="" style=" position:relative; left: -140px; top: -350px; color: white">Surat yuklab olish</a>
+    {% else %}
+        <div class="hide-info-objects">
+            <h1 class="select-image-hide-info">Ma'lumotlarni kiriting</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="object">
+                    <input type="file" name="image" class="selected_image" required>
+                </div>
+                <div class="object">
+                    <img src="" alt="" class="image">
+                </div>
+                <div class="object">
+                    <textarea type="text" name="message" class="encrypt-info" required
+                              placeholder="Shifrlamoqchi bolgan ma'lumotingiz"></textarea>
+                </div>
+                <div class="object">
+                    <button type="submit" class="bttn">Ma'lumot shifrlash</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

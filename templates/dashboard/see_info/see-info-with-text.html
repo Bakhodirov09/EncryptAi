@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/for-see-info-text.css' %}">
+{% endblock %}
+{% block content %}
+    {% if decrypted_message %}
+        <div class="see-info-objects">
+            <textarea disabled style="cursor:text; height: 200px;">{{ decrypted_message }}</textarea>
+        </div>
+    {% else %}
+        <form action="{% url 'dashboard:see_info:with_text' %}" method="post">
+        {% csrf_token %}
+            <div class="see-info-objects">
+                <textarea required name="message" class="message-1"
+                          placeholder="Shifrlangan textni kiriting"></textarea>
+                <button type="submit">Ma'lumot ko'rish</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if request.path == '/dashboard/' %} Boshqaruv panelingiz {% elif request.path == '/account/' %} Your
+        Account {% elif request.path == "/users/login/" %} O'z akkauntingizga
+        kiring {% elif request.path == '/sign-up/' %}
+        Ro'yxatdan
+        otmoqdasiz {% elif request.path == '/logout/' %} Xayr {% elif request.path == '/dashboard/see-info/with-photo/' %} Ma'lumotlarni kiriting {% else %} Xush kelibsiz {% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/for-index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/for-login-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}
+
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+{% block new_css %}
+
+{% endblock %}
+<body>
+
+{% include 'layouts/header.html' %}
+
+{% if request.path == '/users/login/' or request.path == '/users/register' %}
+    <p></p>
+{% else %}
+    <div class="panel">
+        <div class="button">
+            <a href="{% url 'dashboard:see_info:see_info' %}"><button class="eye{% if request.path == '/dashboard/see-info/' or request.path == '/dashboard/see-info/with-photo/' or request.path == '/dashboard/see-info/with-text/' %}-active{% endif %}"><ion-icon name="eye-outline" class="eye-off"></ion-icon>Ma'lumot ko'rish</button></a>
+        </div>
+        <div class="button">
+            <a href="{% url 'dashboard:hide_info:hide_info' %}"><button class="eye{% if request.path == '/dashboard/hide-info/' or request.path == '/dashboard/hide-info/with-photo/' or request.path == '/dashboard/hide-info/with-text/' %}-active {% endif %}"> <ion-icon name="eye-off-outline" class="eye-off"></ion-icon>Ma'lumot Yashirish</button></a>
+        </div>
+        <div class="button">
+            <a href=""><button class="my-informations{% if request.path == '/users/my-encrypted-informations/' %}-active {% endif %}"> <ion-icon name="information-circle-outline" class="information-icon"></ion-icon>Mening shifrlangan ma'lumotlarim</button></a>
+        </div>
+    </div>
+{% endif %}
+{% block content %}
+
+{% endblock %}
+
+{% include 'layouts/footer.html' %}
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% block extra_js %}
+
+{% endblock %}
+</body>
+</html>

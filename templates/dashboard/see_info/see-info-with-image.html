@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/for-see-info.css' %}">
+{% endblock %}
+{% block content %}
+    {% if image and hidden_info %}
+        <div class="hide-info-objects" style="margin-bottom: -250px;">
+            <h1 class="select-image-hide-info" style="margin-left: -100px;">Rasmdagi shifrlangan ma'lumot</h1>
+            <img src="{{ image.url }}" alt=""
+                 style="display: block; margin-left: 650px; height: 250px; width: 250px; " class="image11">
+            <p class="hidden-info" style="margin-top: -200px">Shifrlangan ma'lumot: <br> <b>{{ hidden_info }}</b></p>
+        </div>
+    {% elif hidden_info %}
+        <div class="hide-info-objects">
+            <h1 class="select-image-hide-info"
+                style="margin-left: -300px; font-size: 3em; width: 1550px; display: inline;">{{ hidden_info }}</h1>
+        </div>
+    {% else %}
+        <div class="hide-info-objects">
+            <h1 class="select-image-hide-info">Ma'lumotlarni kiriting</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="object">
+                    <input class="selected_image" type="file" required name="image">
+                </div>
+                <div class="object">
+                    <img src="" alt="" class="image">
+                </div>
+                <div class="object">
+                    <button type="submit" class="bttn">Shifrlangan Ma'lumot Ko'rish</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

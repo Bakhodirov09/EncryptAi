@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required name="password">
+                    <label>Parol</label>
+                </div>
+                <div class="remember-forgot">
+                    <a href="">Parol unutdingizmi?</a>
+                </div>
+                <button type="submit" class="btn">Kirish</button>
+                <div class="login-register">
+                    <p onclick="">Akkauntingiz yo'qmi? <a href="#" class="register-link">Ro'yxatdan
+                        o'tish</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form action="{% url 'users:register' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" required name="first_name">
+                    <label>Ism</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" required name="last_name">
+                    <label>Familya</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required name="username">
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="text" required name="email">
+                    <label>Gmail</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required name="password">
+                    <label>Parol</label>
+                </div>
+                <div class="login-register">
+                    <p>Akkauntingiz bormi? <a href="#" class="login-link">Login</a>
+                    </p>
+                </div>
+                <button type="submit" class="btn">Ro'yxatdan o'tish</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/for-login.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="select-functions">
+        <h1 class="text">Funksiya Tanlang</h1>
+        <a href="{% url 'dashboard:hide_info:with_photo' %}"><button class="with-photo"> <ion-icon name="images-outline" class="icon-index-function"></ion-icon>Surat Orqali</button></a>
+        <a href="{% url 'dashboard:hide_info:with_text' %}"><button class="with-text"><ion-icon name="text-outline" class="icon-index-function"></ion-icon>Text Orqali</button></a>
+    </div>
+
+{% endblock %}

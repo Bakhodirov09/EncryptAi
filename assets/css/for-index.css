@@ -1,0 +1,32 @@
+.select-functions {
+    margin: -310px 0 80px 290px;
+    text-align: center;
+}
+
+.select-functions h1 {
+    font-size: 3.9em;
+    position: relative;
+    top: -65px;
+}
+
+.select-functions a button {
+    width: 300px;
+    height: 150px;
+    margin-right: 50px;
+    background-color: #070f15;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 20px;
+    font-size: 1.2em;
+    transition: .3s ease all;
+}
+
+.select-functions a button:hover {
+    border-bottom: 5px solid #54AEFF;
+    transition: .3s ease all;
+}
+
+.icon-index-function {
+    margin-right: 20px;
+}

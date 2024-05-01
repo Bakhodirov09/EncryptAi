@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block new_css %}
+    <style>
+        .see-info-with-text {
+            margin: -35px;
+            margin-left: 50px;
+        }
+
+        form {
+            margin-top: -85px;
+            margin-left: 550px;
+            position: relative;
+            top: -250px;
+        }
+
+        textarea {
+            width: 500px;
+            height: 59px;
+            max-height: 200px;
+            outline: none;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: white;
+            resize: none;
+            font-family: "Roboto";
+        }
+
+        textarea::placeholder {
+            color: white;
+        }
+        .message {
+            margin-left: 600px;
+            margin-top: -150px;
+            position: relative;
+            top: -200px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% if encrypted_message %}
+        <div class="see-info-with-text">
+            <textarea class="message">{{ encrypted_message }}</textarea>
+        </div>
+    {% elif message %}
+        <h1 style="position:relative; top: -400px; margin-top: -2px; left: 550px; display:inline-block;">{{ message }}</h1>
+        <form action="{% url 'dashboard:hide_info:with_text' %}" method="post">
+            {% csrf_token %}
+            <div class="see-info-with-text">
+                <textarea placeholder="Shifrlamoqchi bolgan textni kiriting..." name="message"
+                          class="message-1" required></textarea>
+                <button type="submit">Ma'lumot shifrlash</button>
+            </div>
+        </form>
+    {% else %}
+        <form action="{% url 'dashboard:hide_info:with_text' %}" method="post">
+            {% csrf_token %}
+            <div class="see-info-with-text">
+                <textarea placeholder="Shifrlamoqchi bolgan textni kiriting..." name="message"
+                          class="message-1"></textarea>
+                <button type="submit">Ma'lumot shifrlash</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

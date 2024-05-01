@@ -1,0 +1,53 @@
+.object .image.active {
+    width: 250px;
+    height: 250px;
+    margin-left: 650px;
+    display: block;
+}
+
+.hide-info-objects {
+    position: relative;
+    left: 500px;
+    display: inline-block;
+    top: -380px;
+}
+
+.select-image-hide-info {
+    font-size: 3.9em;
+    position: relative;
+    left: 150px;
+    top: -50px;
+}
+
+.object {
+    margin-left: -150px;
+    margin-bottom: 0;
+}
+
+.object .image {
+    display: none;
+    width: 250px;
+    height: 250px;
+    margin-left: 650px;
+}
+
+
+.object button {
+    position: relative;
+    top: 150px;
+}
+
+.object button.active {
+    position: relative;
+    top: -200px;
+}
+
+footer {
+    margin-top: -170px;
+}
+
+footer.active {
+    height: 370px;
+    margin-top: -367px;
+}
+
