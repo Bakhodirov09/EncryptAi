@@ -1,8 +1,11 @@
 from django.contrib import admin
+from users.models import ConfirmationCodesModel, UsersModel
 
-from hide_info.models import HiddenInfoModel
-from users.models import ConfirmationCodesModel
 
+@admin.register(UsersModel)
+class UsersModelAdmin(admin.ModelAdmin):
+    list_display = ['username', 'first_name', 'last_name', 'email', 'is_active', 'voice_status']
+    search_fields = ['username', 'first_name', 'last_name', 'email']
 
 @admin.register(ConfirmationCodesModel)
 class ModelNameAdmin(admin.ModelAdmin):

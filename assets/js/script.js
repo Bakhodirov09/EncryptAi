@@ -12,8 +12,8 @@ if (textarea) {
         textarea.style.height = 'auto';
         let scHeight = e.target.scrollHeight;
         if (scHeight >= '104') {
-            footer.style.position = 'relative';
-            footer.style.top = '-110px'
+            footer.style.marginTop = '-140px'
+            footer.style.height = '710px'
         };
         textarea.style.height = `${scHeight}px`;
     });
@@ -22,7 +22,6 @@ if (textarea) {
 if (message) {
     message.style.height = '200px';
     message.style.cursor = 'text';
-    message.disabled = true;
     footer.classList.add('active');
 }
 

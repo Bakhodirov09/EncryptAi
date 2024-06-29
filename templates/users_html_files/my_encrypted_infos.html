@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="encrypted-infos-files">
+        {% if not saw_infos and not hidden_infos %}
+            <h1 class="alert">Siz hech qanday ma'lumot shifrlamagansiz...!</h1>
+        {% else %}
+            <div class="object">
+                {% for saw_info in saw_infos %}
+                    {% if saw_info.image.url %}
+                    <img src="{{ saw_info.image.url }}" alt="">
+                    {% endif %}
+                    <p1></p1>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

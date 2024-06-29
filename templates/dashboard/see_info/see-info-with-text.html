@@ -6,8 +6,10 @@
 {% block content %}
     {% if decrypted_message %}
         <div class="see-info-objects">
-            <textarea disabled style="cursor:text; height: 200px;">{{ decrypted_message }}</textarea>
+            <textarea>{{ decrypted_message }}</textarea>
         </div>
+    {% elif message %}
+        <h3>{{ message }}</h3>
     {% else %}
         <form action="{% url 'dashboard:see_info:with_text' %}" method="post">
         {% csrf_token %}

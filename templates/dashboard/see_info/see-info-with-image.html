@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     {% if image and hidden_info %}
-        <div class="hide-info-objects" style="margin-bottom: -250px;">
+        <div class="see-info-objects">
             <h1 class="select-image-hide-info" style="margin-left: -100px;">Rasmdagi shifrlangan ma'lumot</h1>
             <img src="{{ image.url }}" alt=""
                  style="display: block; margin-left: 650px; height: 250px; width: 250px; " class="image11">
@@ -13,7 +13,7 @@
         </div>
     {% elif hidden_info %}
         <div class="hide-info-objects">
-            <h1 class="select-image-hide-info"
+            <h1 class="select-image-hide-info-1"
                 style="margin-left: -300px; font-size: 3em; width: 1550px; display: inline;">{{ hidden_info }}</h1>
         </div>
     {% else %}

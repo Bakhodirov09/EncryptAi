@@ -1,10 +1,16 @@
 from django.contrib import admin
 
-from see_info.models import SawInfoModel
+from see_info.models import SawImagesModel, SawTextsModel
 
 
-@admin.register(SawInfoModel)
-class SawInfoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'created_at', 'title']
-    search_fields = ['id', 'title']
+@admin.register(SawImagesModel)
+class SawImagesAdmin(admin.ModelAdmin):
+    list_display = ['admin_photo', 'username']
+    search_fields = ['username']
+    readonly_fields = ['admin_photo']
+
+@admin.register(SawTextsModel)
+class SawTextsAdmin(admin.ModelAdmin):
+    list_display = ['username']
+    search_fields = ['username', 'decrypted_text', 'encrypted_text']
     list_filter = ['created_at', 'updated_at']

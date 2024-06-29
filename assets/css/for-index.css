@@ -1,5 +1,7 @@
 .select-functions {
-    margin: -310px 0 80px 290px;
+    margin: -330px 0 80px 290px;
+    position: relative;
+    top: -150px;
     text-align: center;
 }
 
@@ -30,3 +32,34 @@
 .icon-index-function {
     margin-right: 20px;
 }
+
+.select-functions a button {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+    header .navbar button {
+        position: relative;
+        left: 10px;
+    }
+    .panel .button a button {
+        height: 50px;
+        font-size: 17px;
+    }
+    .select-functions button {
+        margin-bottom: 20px;
+    }
+    .select-functions {
+        position: relative;
+        top: -550px;
+        margin-top: -550px;
+    }
+
+    .select-functions a button {
+        width: 450px;
+        height: 170px;
+        font-size: 40px;
+    }
+}
+
+

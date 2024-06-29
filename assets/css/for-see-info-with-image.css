@@ -1,0 +1,53 @@
+.select-image-hide-info {
+    font-size: 3.9em;
+    position: relative;
+    top: -150px;
+}
+
+.hide-info-objects {
+    position: relative;
+    left: 500px;
+    display: inline-block;
+    top: -380px;
+}
+
+.object {
+    margin-left: -150px;
+    margin-bottom: 0;
+}
+
+.object .image {
+    display: none;
+    width: 250px;
+    height: 250px;
+    margin-left: 650px;
+}
+
+
+.object-button button {
+    width: 125px;
+    height: 40px;
+    position: relative;
+    top: 150px;
+    left: -160px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007BFF;
+}
+
+.object-button button.active {
+    position: relative;
+    top: -100px;
+}
+
+@media screen and (max-width: 1024px) {
+    .panel {
+        position: relative;
+        left: -300px;
+    }
+    .hide-info-objects {
+        margin-top: 150px;
+        margin-left: -20px;
+    }
+}

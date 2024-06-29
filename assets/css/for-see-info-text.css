@@ -23,3 +23,26 @@ textarea {
 textarea::placeholder {
     color: white;
 }
+
+.see-info-objects {
+    width: 350px;
+    height: 100px;
+    margin-top: -100px;
+    margin-left: 650px;
+    position: relative;
+    top: -280px;
+}
+
+/*@media (max-width: 768px) {*/
+/*    .see-info-objects {*/
+/*        margin-left: 200px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*    .see-info-objects {*/
+/*        margin-left: 100px;*/
+/*    }*/
+/*}*/
+
+/* Additional styles unchanged */

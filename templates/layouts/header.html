@@ -1,11 +1,11 @@
 {% load static %}
 <header>
     <div class="navbar">
-        <h1 class="text"><a href="{% url 'dashboard:see_info:see_info' %}">Encrypt Ai</a></h1>
+        <h1 class="text"><a href="{% url 'home' %}">Encrypt Ai ™</a></h1>
         {% if request.user.is_authenticated %}
-            <button class="dashboard1-active"><a href="" class="dashboard"><ion-icon name="git-branch-outline" class="git-icon"></ion-icon> Dashboard</a></button>
+            <button class="dashboard1{% if request.path == '/dashboard/see-info/' or request.path == '/dashboard/hide-info/' %} active{% endif %}"><a href="{% url 'home' %}" class="dashboard"><ion-icon name="git-branch-outline" class="git-icon"></ion-icon> Dashboard</a></button>
         {% else %}
-            <button class="account"><a href="{% url 'users:login' %}"><ion-icon class="login-icon" name="log-in-outline"></ion-icon> <p class="login-text">Login</p></a></button>
+            <button class="account-active"><a href="{% url 'users:login' %}"><ion-icon class="login-icon" name="log-in-outline"></ion-icon> <p class="login-text">Login</p></a></button>
         {% endif %}
     </div>
 </header>

@@ -10,7 +10,7 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, View
 from stegano.lsb import lsb
-from hide_info.models import HiddenInfoModel
+from hide_info.models import *
 from django.http import HttpResponseBadRequest, HttpResponse
 from environs import Env
 
@@ -68,8 +68,14 @@ class HideInfoWithTextView(View):
                         random_number = random.randint(0, len(request.POST['message']))
                         sanoq += 1
             context = {
-                'encrypted_message': encrypted_message
+                'encrypted_text': encrypted_message
             }
+            HiddenTextsModel.objects.create(
+                user=request.user,
+                username=request.user.username,
+                encrypted_text=encrypted_message,
+                decrypted_text=request.POST['message']
+            )
             return render(request, 'dashboard/hide_info/hide-info-with-text.html', context)
         else:
             return render(request, 'dashboard/hide_info/hide-info-with-text.html', {'message': "Iltimos ma'lumotlarni tekshirib qayta kiriting!"})
@@ -93,21 +99,18 @@ class HideInfoWithPhotoView(View):
             encoded_image_bytes = output.getvalue()
         file_dir = os.path.join(settings.MEDIA_ROOT, 'hidden_images')
         os.makedirs(file_dir, exist_ok=True)
-        old_pic = HiddenInfoModel.objects.filter(user=request.user).last()
-        file_path = os.path.join(file_dir,
-                                 f"{request.user}'s_{old_pic.id + 1 if old_pic != None else 1}_hidden_image.png")
+        new_image = HiddenImagesModel.objects.create(
+            title=message,
+            user=request.user,
+            username=request.user.username
+        )
+        file_path = os.path.join(file_dir, f"{request.user}'s_{new_image.id}_hidden_image.png")
         with open(file_path, 'wb') as f:
             f.write(encoded_image_bytes)
-        new_image = HiddenInfoModel.objects.create(
-            image=file_path,
-            title=message,
-            user=request.user
-        )
-        new_image_id = new_image.id
+        new_image.image = file_path
         new_image.save()
         context = {
-            'image': HiddenInfoModel.objects.get(id=new_image_id).image
+            'image': new_image.image
         }
-
         return render(request, 'dashboard/hide_info/hide-info-with-photo.html', context)
 

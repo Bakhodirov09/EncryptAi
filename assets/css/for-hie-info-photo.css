@@ -1,0 +1,23 @@
+.object-button button {
+    width: 125px;
+    height: 40px;
+    position: relative;
+    top: 150px;
+    left: -120px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007BFF;
+}
+
+.object-button button.active {
+    position: relative;
+    top: -100px;
+}
+
+@media screen and (min-height: 768px) and (max-width: 1024px) {
+    .panel {
+        position: relative;
+        left: -400px;
+    }
+}

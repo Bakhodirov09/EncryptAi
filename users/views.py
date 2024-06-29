@@ -16,21 +16,27 @@ class RegisterView(View):
 
     def post(self, request):
         form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.is_active = True
-            user.save()
-            login(request, user)
-            return redirect('dashboard:see_info:see_info')
+        if request.POST['check'] == True:
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.set_password(form.cleaned_data['password'])
+                user.is_active = True
+                user.save()
+                login(request, user)
+                return redirect('dashboard:see_info:see_info')
+            else:
+                context = {
+                    'message': form.errors
+                }
+                return render(request, 'users_html_files/login.html', context=context)
         else:
             context = {
-                'message': form.errors
+                'message': 'Iltimos EncryptAi shartlariga rozilik bildiring.!!'
             }
-            return render(request, 'users_html_files/register.html', context=context)
+            return render(request, 'users_html_files/login.html', context=context)
 @method_decorator(login_required, name='dispatch')
 class AccountView(ListView):
-    template_name = 'users_html_files/accoun.html'
+    template_name = 'users_html_files/account.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -55,3 +61,12 @@ class LoginView(View):
                 return render(request, 'users_html_files/login.html', context)
         else:
             return HttpResponse(form.errors, status=440)
+
+# class GetUserEncryptedInfosView(ListView):
+#     template_name = 'users_html_files/my_encrypted_infos.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['hidden_infos'] = HiddenInfoModel.objects.filter(user=self.request.user)
+#         context['saw_infos'] = SawInfoModel.objects.filter(user=self.request.user)
+#         return context
